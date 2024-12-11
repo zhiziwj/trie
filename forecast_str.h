@@ -36,17 +36,7 @@ class trie{
 				if(in==nullptr){
 					return "";//have not
 				}
-				bool flag=false;
-				for(int i=0;i<26;i++){
-					if(in->last[i]!=nullptr){
-						in=in->last[i];
-						flag=true;
-						break;
-					}
-				}
-				if(!flag){
-					in=nullptr;
-				}
+				in=in->last[str[i]-'a'];
 			}
 			string ans="";
 			while(!in->is_end){
@@ -58,18 +48,15 @@ class trie{
 					}
 				}
 			}
-			ans=str+ans;
 			return ans;
 		}
 		void delete_tree(ch_node* node){
-			if(node->is_end){
+			if(node==nullptr){
 				delete node;
 				return;
 			}
 			for(int i=0;i<26;i++){
-				if(node->last[i]!=nullptr){
-					delete_tree(node->last[i]);
-				}
+				delete_tree(node->last[i]);
 			}
 			delete node;
 		}
