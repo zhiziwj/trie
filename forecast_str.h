@@ -52,7 +52,6 @@ class trie{
 		}
 		void delete_tree(ch_node* node){
 			if(node==nullptr){
-				delete node;
 				return;
 			}
 			for(int i=0;i<26;i++){
